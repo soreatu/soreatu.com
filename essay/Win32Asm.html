@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="utf-8" lang="en">
+<style>
+    li { line-height: 36px}
+    hr { border: 1px solid gray; margin: 2ex 0; }
+</style>
+<title>Environment setup for win32 assembly programming under Win10</title>
+<body>
+    <h2>Introduction</h2>
+    <p>Having been roughly aware of what 16-bit assembly language is and how it works, I started to attain some knowledge about 32-bit assembly language. However, the setup of environment for win32 assembly programming was rather tricky. This article is mainly about one method I used to successfully set up the environment under <b>Win10</b>.</p>
+    <hr>
+
+    <h2>Tools</h2>
+    <ul>
+        <li>(recommended) Code Editor: <a href="https://code.visualstudio.com/"  target="_blank"><b>VS Code</b></a>
+            <br>
+            providing us code highlighting and better interface.</li>
+        <li>(important) Toolkits: <a href="http://www.masm32.com/" target="_blank"><b>MASM32 SDK</b></a>
+            <br>
+            including compiler(ml, rc), linker(link), libs, docs and many other indispensable resources as well as some example codes.</li>
+        <li>(unnecessary) <b>nmake</b>
+            <br>
+            This tool can help us to automatically compile and link source codes. It seems to not support standalone downloading, but can be found in your <i>Microssoft VisualStudio</i> folder if you have downloaded <a href="https://visualstudio.microsoft.com/" target="_blank">VS</a> in your computer.
+            <br>
+            (My computer's path for nmake.exe is "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\bin\Hostx64\x64\nmake.exe" )
+        </li>
+    </ul>
+    <hr>
+
+    <h2>Setup</h2>
+    <h4>VS Code</h4>
+    <p>For the setup of VS Code, I will write one standalone article in the future.</p>
+    <h4>MASM32 SDK</h4>
+    <p>Firstly, download <b>MASM32 SDK</b> from <a href="http://www.masm32.com/" target="_blank">http://www.masm32.com/</a>
+        <br>
+        (remember to select the most closed server to download).</p>
+    <p> <img src="img/masm32.png"> </p>
+    <p> Then, unzip the compressed file and run <i>install.exe</i></p>
+    <p> <img src="img/install.png"> </p>
+    <p> Choose the installation partition (I choosed <i>C</i> partition).</p>
+    <p> <img src="img/partition.png"> </p>
+    <p> Click <i>OK</i> or whatever all the way down, and wait while building.</p>
+    <p> <img src="img/cmd.png"> </p>
+    <p> Finally, you will get the <i>Installation success</i> window proving that you have successfully installed the <i>masm32</i>. Press any key to continue.</p>
+    <p> <img src="img/success.png"> </p>
+    <p> Masm32 ships with a little editor which we don't need because we have better choice(VS Code). Just close it.</p>
+    <p> <img src="img/ide.png"> </p>
+    <p> At last, you must <b>set your Environment Variables</b> at <i>masm32/bin</i> in order to use <i>ml, rc, link</i> commands directly in the cmd. </p>
+    <p> For that, use shortcut win+s and Type <code> path </code>, and then type <code> Enter </code> to get into the <i>System Properties</i> window. Click the <i>Environment variables</i> bottom.</p>
+    <p> <img src="img/path.png"> </p>
+    <p> <img src="img/syspro.png"> </p>
+    <p> Add your masm32 path (like "C:\masm32\bin") to the <i>path</i> variables.</p>
+    <p> <img src="img/setpath.png"> </p>
+    <p> <img src="img/masmpath.png"> </p>
+    <p> Click <i>OK</i> bottom three times, and the Environment Variables is set.</p>
+    <h4>nmake</h4>
+    <p> After you have found or downloaded the file <i>nmake.exe</i>, you can simply duplicate it into the <i>masm32/bin</i> folder where you have set your <i>path</i> at.</p>
+    <hr>
+
+    <h2>Examples</h2>
+    <p> Now, the environment for win32 assembly programming is established. We are about to have a test.</p>
+    <p> Make a folder to store your code. In my case, I used <i>C:\masm32\Source</i>.</p>
+    <p> Under the directory, make an folder called "HelloWorld" for our test code.</p>
+    <h4>Code</h4>
+    <p><a href="code/helloworld.rc" target="_blank">helloworld.rc</a> </p>
+    <p><a href="code/helloworld.asm" target="_blank">helloworld.asm</a> </p>
+    <p> Here in the code, I used the abosulute path for the <code> libs </code> and <code> incs </code>, you should change them according to your own path.</p>
+    <h4>Compile and link</h4>
+    <p> Open cmd under the current directory.</p>
+    <p> <img src="img/cmd1.png"> </p>
+    <p> Type <code> rc helloworld.rc </code> to compile the resource file.</p>
+    <p> Type <code> ml /c /coff helloworld.asm </code> to compile the asm file.</p>
+    <p> Then, type <code> link /subsystem:windows helloworld.RES helloworld.obj </code> to get the final execuatable file</p>
+    <p> <img src="img/compile.png"> </p>
+    <p> Type <code> helloworld.exe </code> to run the executable.</p>
+    <p> <img src="img/run.png"></p>
+    <p> (ignore the error codes)</p>
+    <h3> Yeah, finally we did it!</h3>
+    <hr>
+    
+    <h2>Alternative</h2>
+    <p>By using <i>nmake</i>, you can simply create a "<a href="code/MAKEFILE" target="_blank">MAKEFILE</a>" file under the current folder, and just Type <code> nmake </code> to get everything done.</p>
+    <p> <img src="img/nmake.png"></p>
+    <hr>
+
+    <h2>Reference</h2>
+    <p><a href="https://baike.baidu.com/item/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B32%E4%BD%8D%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1">windows环境下32位汇编语言程序设计</a> </p>
+    <p><a href="http://www.cnblogs.com/BoyXiao/archive/2010/11/06/1870397.html">4种方法搭建汇编程序开发环境 </a> </p>
+    <p><a href="https://www.cnblogs.com/lsdb/p/7402955.html"> MASM32 环境搭建</a> </p>
+    <hr>
+    <p>last modified (2019-05-10)</p>
+    

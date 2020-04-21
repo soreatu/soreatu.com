@@ -1,0 +1,542 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Reverse Engineering Environment Setup</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+;
+/*!
+Misty Light
+Brought to you with ❤️ by E-Tiger Studio, 2017-2019
+https://github.com/etigerstudio/typora-misty-theme
+ */
+:root {
+  --control-text-color: #777;
+  --side-bar-bg-color: #f6f8fa
+}
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: subpixel-antialiased
+}
+body {
+  font-family: "SF UI Text","PingFang SC",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","微软雅黑",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: #24292e;
+  line-height: 1.5;
+  font-weight: 300
+}
+#write {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 30px 100px
+}
+#write > ol:first-child,
+#write > ul:first-child {
+  margin-top: 30px
+}
+body > :first-child {
+  margin-top: 0!important
+}
+body > :last-child {
+  margin-bottom: 0!important
+}
+a {
+  color: #4183c4
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: text;
+  color: #142331
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  text-decoration: none
+}
+h1 code,
+h1 tt,
+h2 code,
+h2 tt,
+h3 code,
+h3 tt,
+h4 code,
+h4 tt,
+h5 code,
+h5 tt,
+h6 code,
+h6 tt {
+  font-size: inherit
+}
+h1 {
+  text-align: center;
+  padding-bottom: .3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  margin: 1em auto 1.2em;
+  font-weight: 300
+}
+h1:after {
+  border-bottom: 2px dashed #afec9e;
+  content: '';
+  width: 100px;
+  display: block;
+  margin: .2em auto 0;
+  height: 2px
+}
+h2 {
+  font-size: 1.75em;
+  padding-left: 9px;
+  line-height: 1.4;
+  border-left: 6px solid #cce5ff
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43
+}
+h3:before {
+  border-radius: 50%;
+  background-color: #9ed0ff;
+  content: '';
+  width: 6px;
+  display: inline-block;
+  height: 6px;
+  vertical-align: middle;
+  margin-bottom: .18em;
+  margin-right: 8px
+}
+#write > h3.md-focus:before,
+#write > h4.md-focus:before {
+  background-color: transparent;
+  width: auto;
+  height: auto
+}
+h4 {
+  font-size: 1.25em
+}
+h4:before {
+  background-color: #9ed0ff;
+  content: '';
+  width: 6px;
+  display: inline-block;
+  height: 2px;
+  vertical-align: middle;
+  margin-bottom: .18em;
+  margin-right: 8px
+}
+h5 {
+  font-size: 1em
+}
+h6 {
+  font-size: 1em;
+  color: #777
+}
+blockquote,
+dl,
+ol,
+p,
+table,
+ul {
+  margin: .8em 0
+}
+li > ol,
+li > ul {
+  margin: 0
+}
+hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0
+}
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6,
+body>h1:first-child,
+body>h1:first-child+h2,
+body>h2:first-child,
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+  margin-top: 0
+}
+li p.first {
+  display: inline-block
+}
+ol,
+ul {
+  padding-left: 30px
+}
+ol:first-child,
+ul:first-child {
+  margin-top: 0
+}
+ol:last-child,
+ul:last-child {
+  margin-bottom: 0
+}
+blockquote {
+  border-left: 4px dotted #e5e8e8;
+  padding: 0 12px;
+  color: #444;
+  font-size: .9em
+}
+blockquote blockquote {
+  padding-right: 0
+}
+table {
+  padding: 0;
+  word-break: initial
+}
+table tr {
+  border-top: 1px solid #dadfe6;
+  margin: 0;
+  padding: 0
+}
+table.md-table tr:nth-child(2n) {
+  background-color: #fafbfc
+}
+table tr th {
+  font-weight: 400;
+  border: 1px solid #dadfe6;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px
+}
+table tr td {
+  border: 1px solid #dadfe6;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px
+}
+table tr td:first-child,
+table tr th:first-child {
+  margin-top: 0
+}
+table tr td:last-child,
+table tr th:last-child {
+  margin-bottom: 0
+}
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd
+}
+.md-fences,
+code,
+tt {
+  font-size: 90%;
+  border-radius: 3px;
+  font-family: "SF Mono",Consolas,"Liberation Mono",Menlo,Courier,monospace,"PingFang SC","Microsoft YaHei","微软雅黑"
+}
+code,
+tt {
+  margin: 0 2px;
+  padding: 2px 4px;
+  background-color: #e2f0ff
+}
+.md-fences {
+  background-color: #f6f8fa;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 12px 1em
+}
+.md-task-list-item > input {
+  margin-left: -1.45em;
+  margin-top: calc(.9em - 10px)
+}
+@media print {
+  body {
+    font-size: 11px;
+    font-weight: 400
+  }
+  pre,
+  table {
+    page-break-inside: avoid
+  }
+  pre {
+    word-wrap: break-word
+  }
+}
+#write pre.md-meta-block {
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7faf6;
+  border: 0;
+  border-radius: 3px;
+  color: #777;
+  margin-top: 0!important
+}
+.mathjax-block > .code-tooltip {
+  bottom: .375rem
+}
+#write > h3.md-focus:before {
+  left: -1.5625rem;
+  top: .375rem
+}
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before {
+  left: -1.5625rem;
+  top: .285714286rem
+}
+.md-image > .md-meta {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-family: "SF Mono",Consolas,"PingFang SC","Liberation Mono",Courier,monospace,"Microsoft YaHei","微软雅黑";
+  padding: 2px 4px 0;
+  font-size: .9em;
+  color: inherit
+}
+.md-tag {
+  color: inherit
+}
+.md-toc {
+  margin-top: 20px;
+  padding-bottom: 20px
+}
+.sidebar-tabs {
+  border-bottom: none
+}
+#typora-quick-open {
+  border: 1px solid #ddd;
+  background-color: #f8f8f8
+}
+#typora-quick-open-item {
+  background-color: #fafafa;
+  border-color: #fefefe #e5e5e5 #e5e5e5 #eee;
+  border-style: solid;
+  border-width: 1px
+}
+.typora-quick-open-item {
+  padding-top: 3px
+}
+.typora-quick-open-list {
+  margin-top: 4px
+}
+.typora-quick-open-item-path {
+  margin-top: -2px
+}
+#md-notification:before {
+  top: 10px
+}
+.on-focus-mode blockquote {
+  border-left-color: rgba(85,85,85,.12)
+}
+.context-menu,
+.megamenu-content,
+footer,
+header {
+  font-family: "SF UI Text","PingFang SC",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","微软雅黑",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+}
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+  visibility: visible
+}
+.mac-seamless-mode #typora-sidebar {
+  background-color: var(--side-bar-bg-color)
+}
+.md-lang {
+  color: #b4654d
+}
+.pin-outline #outline-content .outline-active strong,
+.pin-outline .outline-active {
+  font-weight: 400;
+  color: #232323
+}
+.outline-label {
+  font-weight: 300;
+  color: #646464
+}
+b,
+strong {
+  font-weight: 500
+}
+.file-list-item-summary {
+  font-family: "SF UI Text","PingFang SC",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","微软雅黑",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+}
+.file-list-item-file-name {
+  font-weight: 400
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><h1><a name="reverse-engineering-environment-setup" class="md-header-anchor"></a><span>Reverse Engineering Environment Setup</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#reverse-engineering-environment-setup">Reverse Engineering Environment Setup</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#assignment">Assignment</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n25"><a class="md-toc-inner" href="#virtualbox">VirtualBox</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n33"><a class="md-toc-inner" href="#windowsxp">Windows_XP</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n92"><a class="md-toc-inner" href="#tools">Tools</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n179"><a class="md-toc-inner" href="#snapshot">Snapshot</a></span></p></div><h2><a name="assignment" class="md-header-anchor"></a><span>Assignment</span></h2><p><span>3月2日实验一：逆向分析平台搭建</span></p><p><span>实验步骤：</span></p><p><span>（1）</span><span>	</span><span>下载虚拟机软件（如Vmware、VirtualBox等）并安装。（建议用免费的VirtualBox）</span></p><p><span>（2）</span><span>	</span><span>利用已安装的虚拟机软件，架设一台Windows XP虚拟机。</span></p><p><span>（3）</span><span>	</span><span>在WinXP虚拟机中下载安装Winhex或Ultraedit，然后测试是否能运行。</span></p><p><span>（4）</span><span>	</span><span>在WinXP虚拟机中下载安装OllyDbg，然后测试是否能运行。</span></p><p><span>（5）</span><span>	</span><span>在WinXP虚拟机中下载安装IDA Pro，然后测试是否能运行。</span></p><p><span>（6）</span><span>	</span><span>在WinXP虚拟机中下载安装WinDbg，然后测试是否能运行。</span></p><p><span>（7）</span><span>	</span><span>在WinXP虚拟机中下载安装PEiD，然后测试是否能运行。</span></p><p><span>（8）</span><span>	</span><span>在WinXP虚拟机中下载安装eXeScope，然后测试是否能运行。</span></p><p><span>（9）</span><span>	</span><span>关闭之前打开的应用程序，创建虚拟机快照。</span></p><p><span>请各位同学通过QQ作业于3月8日前在线提交如下内容：（请不要上传文件，QQ作业功能有问题，老师无法下载学生上传的文件）</span></p><p><span>（1）</span><span>	</span><span>简述虚拟机软件安装过程。</span></p><p><span>（2）</span><span>	</span><span>简述WinXP虚拟机架设过程。</span></p><p><span>（3）</span><span>	</span><span>简述Winhex或Ultraedit安装过程，加一张在WinXP虚拟机中的运行截图。</span></p><p><span>（4）</span><span>	</span><span>简述OllyDbg安装过程，加一张在WinXP虚拟机中的运行截图。</span></p><p><span>（5）</span><span>	</span><span>简述IDA Pro安装过程，加一张在WinXP虚拟机中的运行截图。</span></p><p><span>（6）</span><span>	</span><span>简述WinDbg安装过程，加一张在WinXP虚拟机中的运行截图。</span></p><p><span>（7）</span><span>	</span><span>简述PEiD安装过程，加一张在WinXP虚拟机中的运行截图。</span></p><p><span>（8）</span><span>	</span><span>简述eXeScope安装过程，加一张在WinXP虚拟机中的运行截图。</span></p><p><span>（9）</span><span>	</span><span>虚拟机快照创建成功截图一张 </span></p><h2><a name="virtualbox" class="md-header-anchor"></a><span>VirtualBox</span></h2><p><span>打开mac上尘封已久的</span><code>VirutalBox</code><span>，发现有更新：</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfoflgae9j31a50u0gxt.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 4.44.27 PM"></p><p><span>点击链接，下载新版本</span><code>VirtualBox</code><span>:</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfp4gwug1j30cs02ymx9.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.09.09 PM"></p><p><span>然后安装。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfpgk26nrj30za0rwtko.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.20.49 PM"></p><p><span>得到最新版本的</span><code>VirtualBox</code><span>。</span></p><h2><a name="windowsxp" class="md-header-anchor"></a><span>Windows_XP</span></h2><p><span>要安装xp系统，首先得有xp镜像。</span></p><p><span>好在我的win本上早已收藏了一些镜像：</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfosnnyfvj30tm0n9gmt.jpg" referrerpolicy="no-referrer" alt="iso"></p><p><span>用手机开热点，两个电脑同时连，通过局域网</span><code>scp</code><span>秒传镜像：</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfosvjs2aj30y90mhww0.jpg" referrerpolicy="no-referrer" alt="[GN5]FGMATN57EWN8@WQ{N4"></p><hr /><p><span>在</span><code>VirtualBox</code><span>中点击</span><code>new</code><span>，开始创建一个新的虚拟机</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfphhp9xqj31a90u0qa2.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.21.45 PM"></p><p><span>命名为</span><code>Windows XP</code></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyyqbo6qj311q0jyter.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.22.33 PM"></p><p><span>分配内存2GB</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfpjd7508j31280jy795.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.23.35 PM"></p><p><span>创建一个虚拟硬盘</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfpjq8ibdj31200jwjxw.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.23.52 PM"></p><p><span>虚拟硬盘的类型选择默认的</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfpko7jz6j30xa0oe0xo.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.24.27 PM"></p><p><span>如何在物理硬盘上操作这个虚拟硬盘？那自然是动态分配了。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfpl5d96mj311m0okwlh.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.25.16 PM"></p><p><span>存在物理机的位置？默认就好了，空间的话10GB差不多了。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyyyuxndj310q0oa0ys.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.26.07 PM"></p><p><span>OK，点击</span><code>Create</code><span>完成创建。</span></p><hr /><p><span>但是并没有配置上之前下载的</span><code>iso</code><span>镜像，这得自己来搞下。</span></p><p><span>可以在</span><code>Setting</code><span>里面配置，或者直接点击</span><code>Start</code><span>进行配置。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfpq44ogaj31ag0u0qa9.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.29.40 PM"></p><p><span>我是在选中</span><code>Windows XP</code><span>后，在右边的</span><code>Settings</code><span>按钮里配置的。</span></p><p><code>iso</code><span>可以把它理解为一个安装系统的光盘，那自然得在</span><code>Storage</code><span>里面搞它。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyz600ggj31a20u0dru.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.39.37 PM"></p><p><span>这里可以看到加载的光驱是</span><code>Empty</code><span>的，得把这里弄成之前下载好的</span><code>iso</code><span>镜像。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfq2wfiiwj31jd0u07wh.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.42.00 PM"></p><p><code>Choose a disk file</code><span>，选择一个本地磁盘里的</span><code>iso</code><span>文件。</span></p><p><span>导航至之前下载好的镜像处，点击</span><code>open</code><span>，进行添加。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfq5629utj318m0ou16k.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.44.29 PM"></p><p><span>这样，就成功地导入了之前下载好的</span><code>iso</code><span>镜像。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfq6nsf88j30zs0u0wiu.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.44.58 PM"></p><hr /><p><span>选择</span><code>Windows XP</code><span>，点击</span><code>Start</code><span>，启动！</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfq7myzjgj31ag0u0dk4.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.29.40 PM"></p><p><span>但是，草！mac的分辨率太大了，导致</span><code>Windows XP</code><span>里的字体几乎看不清。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqbadcz4j31ad0u0wnl.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.47.25 PM"></p><p><code>power off</code><span>，得调整下显示缩放比例。</span></p><p><code>Settings</code><span>里选择</span><code>Display</code><span>，把</span><code>Scale Factor</code><span>调成</span><code>200%</code></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqaf70xlj30w70u0gpx.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.49.33 PM"></p><hr /><p><span>然后就是</span><code>XP</code><span>的安装。</span></p><p><span>根据提示进行相应的操作。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqd6enxvj30zo0t4411.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.52.14 PM"></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqf2ajkuj30zs0sy146.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.53.54 PM"></p><p><span>嗯，的确是令人耳目一新的新版面啊！</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqfr1h0rj30zk0t2n7p.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.54.31 PM"></p><p><span>XPnb!</span></p><p><span>要取名字，随便取一个。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqgxmnu9j30zu0t2dm8.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 5.55.45 PM"></p><p><span>密钥？那还不容易，网上随便找找就有。</span><code>MRX3F-47B9T-2487J-KWKMF-RPWBY</code></p><p><span>随便设个密码。</span></p><p><span>随便配置。</span></p><p><span>安装成功：</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqq5chszj31190u01h4.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 6.04.32 PM"></p><h2><a name="tools" class="md-header-anchor"></a><span>Tools</span></h2><p><span>安装工具，太穷了，买不起正版的。</span></p><p><span>只能上</span><code>52pojie</code><span>了。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqs7tykrj31fi0u0hdt.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 6.06.33 PM"></p><p><span>这个熟悉而又陌生的网站。。</span></p><p><span>52pojie已经帮我们把工具都整理好了：</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfqw58qsqj31c30u07dn.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 6.10.28 PM"></p><p><span>前往</span><a href='https://down.52pojie.cn/Tools/'><span>爱盘</span></a><span>进行下载相应的工具。</span></p><ul><li><p><span>Winhex 19.9</span></p><p><a href='https://down.52pojie.cn/Tools/Editors/WinHex_v19.9.zip' target='_blank' class='url'>https://down.52pojie.cn/Tools/Editors/WinHex_v19.9.zip</a></p></li><li><p><span>OllyDbg</span></p><p><a href='https://down.52pojie.cn/Tools/Debuggers/OllyDbg%20v2.01.zip' target='_blank' class='url'>https://down.52pojie.cn/Tools/Debuggers/OllyDbg%20v2.01.zip</a></p></li><li><p><span>IDA pro</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfroz476rj30uu076ta8.jpg" referrerpolicy="no-referrer" alt="image-20200302183814085"></p><p><span>得找个6.8版本的。</span></p><p><span>找到一个百度云的：</span><a href='https://pan.baidu.com/s/1i4f1Lbf' target='_blank' class='url'>https://pan.baidu.com/s/1i4f1Lbf</a></p><p><span>176MB，我这网太烂了，得下一年，而且还得要有百度云客户端，太麻烦了，不下了。</span></p><p><span>反正我win本上有IDA Pro 7.2。 IDA在哪里用都一样</span></p></li><li><p><span>WinDbg</span></p><p><a href='https://down.52pojie.cn/Tools/Debuggers/Windbg_x86_6.12.2.633.rar' target='_blank' class='url'>https://down.52pojie.cn/Tools/Debuggers/Windbg_x86_6.12.2.633.rar</a></p></li><li><p><span>PEiD</span></p><p><a href='https://down.52pojie.cn/Tools/PEtools/PEiD%200.95.zip' target='_blank' class='url'>https://down.52pojie.cn/Tools/PEtools/PEiD%200.95.zip</a></p></li><li><p><span>eXeScope</span></p><p><a href='http://mirror2.filefacts.com/f26481cd57d8226575791de2036fcc17/eXeSc650.zip' target='_blank' class='url'>http://mirror2.filefacts.com/f26481cd57d8226575791de2036fcc17/eXeSc650.zip</a></p></li></ul><p><span>这边最好安装一些年代比较久远的版本。</span></p><hr /><p><span>在物理机mac上下载好这些工具，那怎么传进虚拟机呢？</span></p><p><span>网上搜寻了一番，找到了答案：可以用</span><strong><span>共享文件夹</span></strong><span>。</span></p><blockquote><p><span>参考链接：</span><a href='https://www.tomshardware.com/reviews/xp-mode-ubuntu,2434-6.html' target='_blank' class='url'>https://www.tomshardware.com/reviews/xp-mode-ubuntu,2434-6.html</a></p></blockquote><p><span>先启动xp，然后在顶部菜单栏的</span><code>Devices</code><span>处选择</span><code>Install Guest Addtions CD image...</code></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyjuwdtbj30wm0u0x6r.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 6.47.34 PM"></p><p><span>MD，中途三次跟我说通过不了Windows徽章检测？？？安装个这个玩意儿花了将近10min。搞得我mac风扇呼呼呼地转。</span></p><p><span>安装完了，选择</span><code>roboot</code><span>重启，或者直接关机。</span></p><blockquote><p><span>下面这步，貌似一定要在</span><code>XP</code><span>关机的情况下才行。</span></p></blockquote><p><span>在物理机的</span><code>VirtualBox</code><span>里</span><code>Settings -&gt; Shared Folders</code><span>里添加一个物理机的文件目录，作为共享文件夹。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfs1ytiv3j30zs0kmn1u.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 6.50.37 PM"></p><p><span>再把</span><code>XP</code><span>开机。</span></p><blockquote><p><span>安装好这个</span><code>Guest Additions</code><span>以后，就可以随意裁剪窗口大小了！</span></p></blockquote><p><span>再点开我的电脑，发现多了一个网络驱动器。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxckqc77j313x0u0jwf.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 9.53.18 PM"></p><p><span>里面的就是共享文件夹里的内容</span></p><p><span>终于可以把一堆压缩包拖进了</span><code>XP</code><span>虚拟机了。</span></p><p><span>但是解压不了！</span></p><p><span>还得下个压缩包软件，选择</span><code>Bandizip</code><span>。</span></p><p><code>Google</code><span>搜索</span><code>bandizip for windows xp</code><span>，下载适用于</span><code>XP</code><span>系统的旧版本</span><code>Bandizip</code><span>。</span></p><blockquote><p><span>下载链接：</span><a href='https://www.bandisoft.com/bandizip/dl.php?xp' target='_blank' class='url'>https://www.bandisoft.com/bandizip/dl.php?xp</a></p></blockquote><p><span>下完了，放到共享文件夹里，然后在虚拟机里找到，打开，进行安装。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxf03c4yj30x70u0n4c.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 9.56.08 PM"></p><p><span>默认关联文件名后缀就可以了。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxga6lmsj316c0roaeg.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 9.57.04 PM"></p><p><span>然后依次解压工具，为了方便，直接放桌面了。</span></p><blockquote><p><span>PEiD的解压密码为：</span><code>www.52pojie.cn</code></p></blockquote><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyn6kuhoj313m0u0hdt.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 9.58.57 PM"></p><hr /><p><span>测试工具是否能正常打开：</span></p><ul><li><p><span>eXeScope</span>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfym996dcj315s0qe78b.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 9.59.41 PM"></p></li><li><p><span>OllyDbg</span>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfymznb07j312w0t6wja.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.00.49 PM"></p></li><li><p><span>PEiD</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxovr9moj30oc0f4abx.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.05.40 PM"></p></li><li><p><span>Winhex</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxnyv7bcj30u00vvwii.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.01.56 PM"></p></li><li><p><span>WinDbg （还是个安装包，得安装下）</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxohxm95j315g0n2k0o.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.05.16 PM"></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxn7sgvzj317g0u0wju.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.03.51 PM"></p></li><li><p><span>IDA Pro 7.2</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxzksxt8j30c608vjrx.jpg" referrerpolicy="no-referrer" alt="image-20200302221601490"></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfxzt5b8ej31hc0u0t9r.jpg" referrerpolicy="no-referrer" alt="image-20200302221614895"></p></li></ul><p><span>OK，都没问题。</span></p><h2><a name="snapshot" class="md-header-anchor"></a><span>Snapshot</span></h2><p><span>要创建一份快照，保存当前状态。</span></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyaxooiaj30vt0u0x6r.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.24.32 PM"></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfyd5cjmrj30sk0jsdhf.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.28.53 PM"></p><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcfydick5pj31a60u0jva.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2020-03-02 at 10.29.21 PM"></p><p><span>OK，完事。</span></p><p>&nbsp;</p></div>
+</body>
+</html>

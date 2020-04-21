@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="utf-8" lang="en">
+<title>Code</title>
+<style>
+    body { font-family: 'Courier New', Courier, monospace; display: flex; }
+    nav { margin-right: 3em; padding: 2em; }
+    ul { margin: 0; padding-left: 1em; }
+    ul.spaced-list > li { margin-bottom: 1ex; }
+    hr { border: 1px solid gray; margin: 2ex 0; }
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+</style>
+<body>
+    <nav>
+        <ul id="nav">
+            <li><a href="/">home</a>
+                <ul>
+                    <li><a href="/dream">dream</a>
+                    <li><a href="/essay">essay</a>
+                    <li><a href="/code">code</a>
+                    <li><a href="/ctf">ctf</a>
+                    <li><a href="/links">links</a></li>
+                </ul>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>code</h1>
+        <p>Most of the codes can also be found on my <a href ="https://github.com/soreatu/" target="_blank">github</a>.</p>
+        <p>
+            Welcome to fork and pull requests. Moreover, any bug would be highly appreciated.
+        </p>
+        <hr/>
+
+        <h2><a href ="Modify md file by using Python.html" target="_blank">File Modification using Python</a></h2>
+        <p>
+            <b>Description</b>: Modify plenty of markdown files using Python.
+        </p>
+        <ul style="padding-left: 2em">
+            <li><i>os</i> module: get all the files in the current diretory
+            <li><i>re</i> module: find all the image urls
+            <li><i>open</i> function: modify file contents
+            <li><i>requests</i> + <i>concurrent.futures</i> + <i>shutil</i> modules: download images at the same time.
+	    </ul>
+        <small>(last modified <time datetime="2019-10-07">2019-10-07</time>)</small>
+
+
+        <h2><a href ="https://github.com/soreatu/Cryptography" target="_blank">Cryptography</a></h2>
+        <p>
+            <b>Description</b>: Implementation of cryptographic algorithms in Python based on the book <a href="http://www.crypto-textbook.com/" target="_blank">Understanding Cryptography</a>.
+        </p>
+        <small>(last modified <time datetime="2019-07-27">2019-07-27</time>)</small>
+
+
+        <h2><a href="src/DoubleLinkList.h" target="_blank">Doubly Linked List</a></h2>
+        <p>
+            <b>Description</b>: cpp implementation of doubly-linked list, including the following methods:
+        </p>
+        <ul style="padding-left: 2em">
+            <li>inserting at the beginning
+            <li>inserting at the end
+            <li>removing from the beginning
+            <li>removing from the end
+            <li>inserting before a given node
+            <li>inserting after a given node
+            <li>removing a given node
+	    </ul>
+        <small>(last modified <time datetime="2019-04-11">2019-04-11</time>)</small>

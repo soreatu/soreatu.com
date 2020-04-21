@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<meta charset="utf-8" lang="en">
+<title>CTF</title>
+<style>
+    body { font-family: 'Courier New', Courier, monospace; display: flex; }
+    nav { margin-right: 3em; padding: 2em; }
+    ul { margin: 0; padding-left: 1em; }
+    ul.spaced-list > li { margin-bottom: 1ex; }
+    hr { border: 1px solid gray; margin: 2ex 0; }
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+</style>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">home</a>
+                <ul>
+                    <li><a href="/dream">dream</a>
+                    <li><a href="/essay">essay</a>
+                    <li><a href="/code">code</a>
+                    <li><a href="/ctf">ctf</a>
+                    <li><a href="/links">links</a></li>
+                </ul>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>CTF</h1>
+        <p>
+            Difficulty is roughly estimated by numbers on a scale from 0 to 9 or none (for laziness).
+        </p>
+        <hr>
+
+        <h2><a href="http://gxzy.xctf.org.cn/" target="_blank">2020 高校战“疫”网络安全分享赛
+        </a></h2>
+        <time datetime="2020-03-07 09:00">2020-03-07 09:00 +48h</time>
+        <p>
+            <a href="files/HNP.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for NHP in 2020 gxzyCTF.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>
+                <b>NHP</b>: hack DSA, given the size of the random key k.
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://buuoj.cn/challenges" target="_blank">2020 V&N 公开赛</a></h2>
+        <time datetime="2020-02-29 00:00">2020-02-29 00:00 +24h</time>
+        <p>
+            <a href="writeups/Writeup for V&N 2020.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>
+                <b>CRT</b>: CRT with multiple solutions
+            </li>
+            <li>
+                <b>Fast</b>: factor N with knowledge of mutiples of p (and q)
+            </li>
+            <li>
+                <b>Backtrace</b>: Reverse MT19937 to recover the first 4 outputs, given 1000 afterwords outputs
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://www.ichunqiu.com/game-gyctf" target="_blank">2020 GYCTF</a></h2>
+        <time datetime="2020-02-22 12:00">2020-02-21,22,23 12:00 +10h</time>
+        <p>
+            <a href="files/GGH_222fb4818624b47734c5d1d7be531928.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for GGH in 2020 GYCTF.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>
+                <b>GGH</b>: break a simple 150-D GGH cryptosystem
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://nctf.x1c.club/notice" target="_blank">2019 NCTF</a></h2>
+        <time datetime="2019-11-22 21:00">2019-11-22 21:00 +48h</time>
+        <p>
+            <a href="files/NCTF 2019.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for Crypto problems in NCTF 2019.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(1.5)
+                <b>Keyboard</b>: 26 keys + 9 keys (keyboard) cipher
+            </li>
+            <li>(2)
+                <b>Sore</b>: extended Vigenere Cipher
+            </li>
+            <li>(2.5)
+                <b>babyRSA</b>: recover n given e and d
+            </li>
+            <li>(2)
+                <b>childRSA</b>: factor 10240-bit n using Pollard's p-1 method
+            </li>
+            <li>(3.5)
+                <b>Reverse</b>: recover all the DES subkeys given only one subkey
+            </li>
+            <li>(5.5)
+                <b>easyRSA</b>: do RSA decryption even if e and phi(n) are not coprime
+            </li>
+            <li>(4)
+                <b>LCG</b>: 4 attacks according to Linear Congruence Generator
+            </li>
+        </ul>
+        <h3>Misc</h3>
+        <ul>
+            <li>(1)
+                <b>2077</b>: using Google to solve problems
+            </li>
+        </ul>
+
+
+        <p>
+            Above are some ctf challenges that I made for several ctfs.
+        </p>
+
+        <hr>
+
+        <p>
+            Below are some writeups about several ctfs that I once participated in.
+        </p>
+
+        <h2><a href="http://gxzy.xctf.org.cn/" target="_blank">2020 高校战“疫”网络安全分享赛
+        </a></h2>
+        <time datetime="2020-03-07 09:00">2020-03-07 09:00 +48h</time>
+        <p>
+            <a href="http://ctf.njupt.edu.cn/382.html"  target="_blank">writeup</a> by X1cT34m (external link)
+        </p>
+        ...
+        <hr>
+
+
+        <h2><a href="https://hgame.vidar.club/" target="_blank">2020 hgame</a></h2>
+        <time datetime="2020-01-23 20:00">2020-01-23 20:00 ~ 2020-02-13 20:00</time>
+        <p>
+            <a href="writeups/Writeup for hgame2020 Crypto.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Week1</h3>
+        <ul>
+            <li>(50pt)
+                <b>InfantRSA</b>
+            </li>
+            <li>(75pt)
+                <b>Affine</b>
+            </li>
+            <li>(150pt)
+                <b>not_One-time</b>
+            </li>
+            <li>(75pt)
+                <b>Reorder</b>
+            </li>
+        </ul>
+        <h3>Week2</h3>
+        <ul>
+            <li>(125pt)
+                <b>Verification_code</b>
+            </li>
+            <li>(150pt)
+                <b>Remainder</b>
+            </li>
+            <li>(175pt)
+                <b>Inv</b>
+            </li>
+            <li>(175pt)
+                <b>notRC4</b>
+            </li>
+        </ul>
+        <h3>Week3</h3>
+        <ul>
+            <li>(150pt)
+                <b>RSA?</b>
+            </li>
+            <li>(175pt)
+                <b>ToyCipher_XorShift</b>
+            </li>
+            <li>(150pt)
+                <b>Exchange</b>
+            </li>
+            <li>(150pt)
+                <b>Feedback</b>
+            </li>
+        </ul>
+        <h3>Week4</h3>
+        <ul>
+            <li>(150pt)
+                <b>CBCBC</b>
+            </li>
+            <li>(175pt)
+                <b>ToyCipher_Linear</b>
+            </li>
+        </ul>
+        <hr>
+
+
+        <h2>GXYCTF</h2>
+        <time datetime="2019-12-21 10:00">2019-12-21 10:00 +12h</time>
+        <p>
+            <a href="files/GXYCTF_CMA.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for GXYCTF.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>
+                <b>CommonModulusAttack</b>: predict java.util.Random
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://axb.d0g3.cn/" target="_blank">2019 安洵杯</a></h2>
+        <time datetime="2019-11-30 09:00">2019-11-30 09:00 +24h</time>
+        <p>
+            <a href="files/axb 2019.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for axb.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Re</h3>
+        <ul>
+            <li>
+                <b>Easy_Encryption</b>
+            </li>
+        </ul>
+        <h3>Pwn</h3>
+        <ul>
+            <li>
+                <b>fmt32</b>
+            </li>
+            <li>
+                <b>heap</b>
+            </li>
+        </ul>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>
+                <b>This_is_not_a_standard_aes256</b>
+            </li>
+            <li>
+                <b>funney_php</b>
+            </li>
+            <li>
+                <b>justaBase</b>
+            </li>
+            <li>
+                <b>crakeme</b>
+            </li>
+        </ul>
+        <h3>Misc</h3>
+        <ul>
+            <li>
+                <b>吹着贝斯扫二维码</b>
+            </li>
+            <li>
+                <b>Music</b>
+            </li>
+            <li>
+                <b>Attack</b>
+            </li>
+            <li>
+                <b>secret</b>
+            </li>
+        </ul>
+        <h3>Web</h3>
+        <ul>
+            <li>
+                <b>easy_serialize_php</b>
+            </li>
+            <li>
+                <b>easy_web</b>
+            </li>
+        </ul>
+        <hr>
+
+        <h2>2019 中国技能大赛 全国网络安全管理职业技能竞赛 决赛</h2>
+        <time datetime="2019-11-23 19:00">2019-11-23 19:00 - 2019-11-26 12:00</time>
+        <p>
+            <a href="files/nssc.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for NSSC 2019.html"  target="_blank">writeup</a>
+        </p>
+        <p>...</p>
+        <hr>
+
+        <h2><a href="https://ctf2019.sec.sjtu.edu.cn/" target="_blank">2019 高校网络信息安全管理运维挑战赛(EIS 2019)</a></h2>
+        <time datetime="2019-11-21 09:00">2019-11-21 09:00 +8h</time>
+        <p>
+            <a href="files/EIS 2019.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for EIS 2019.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(2)
+                <b>rsa1</b>: p = ab, q = ba
+            </li>
+            <li>(4)
+                <b>rsa2</b>: q = nextprime(os.urandom(32)*8)
+            </li>
+            <li>(2)
+                <b>AES</b>: bad AES-CTR counter choice
+            </li>
+            <li>(4)
+                <b>guess</b>: recover the first 8 states of MT19937
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://race.ichunqiu.com/competition?k=A2IANlpmUGlWJAxoBmcHawdtUCcNOgZlBGJUNlQ2ATRUP1ttCjUCOg01" target="_blank">第三届红帽杯</a></h2>
+        <time datetime="2019-11-10 09:00">2019-11-10 09:00 +24h</time>
+        <p>
+            <a href="files/redhat2019.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for Redhat2019 by X1cT34m.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Crypto</h3>
+        <ul>
+            <li>(4)
+                <b>Related</b>
+            </li>
+            <li>(0)
+                <b>Broadcast</b>
+            </li>
+            <li>(4)
+                <b>精明的Alice</b>
+            </li>
+            <li>(4)
+                <b>Boom</b>
+            </li>
+        </ul>
+        <h3>Misc</h3>
+        <ul>
+            <li>(?)
+                <b>签到</b>
+            </li>
+            <li>(?)
+                <b>Advertising for Marriage</b>
+            </li>
+            <li>(?)
+                <b>恶臭的数据包</b>
+            </li>
+        </ul>
+        <h3>Re</h3>
+        <ul>
+            <li>(?)
+                <b>xx</b>
+            </li>
+            <li>(?)
+                <b>easyRe</b>
+            </li>
+            <li>(?)
+                <b>calc</b>
+            </li>
+        </ul>
+        <h3>Pwn</h3>
+        <ul>
+            <li>(?)
+                <b>three</b>
+            </li>
+        </ul>
+        <h3>Web</h3>
+        <ul>
+            <li>(?)
+                <b>Ticket_System</b>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="http://hxb.hunan.gov.cn/" target="_blank">2019 湖湘杯</a></h2>
+        <time datetime="2019-11-09 10:00">2019-11-09 10:00 +12h</time>
+        <p>
+            <a href="files/hxb 2019.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for hxb 2019.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Misc</h3>
+        <ul>
+            <li>(1)
+                Ezmemory: easy memory forensics
+            </li>
+        </ul>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(1)
+                <b>give me your passport</b>: easy AES-CBC
+            </li>
+            <li>(2)
+                <b>RSA</b>: RSA given e and dp
+            </li>
+            <li>(2)
+                <b>DES</b>: DES decryption given all the subkeys
+            </li>
+        </ul>
+        <hr>
+
+
+
+        <h2><a href="https://race.ichunqiu.com/login?k=VzZbbQs3UGlQNARtUjVXaVBqVmBbYQFgVDVWMgVhVmAEZQE%2B" target="_blank">上海大学生网络安全大赛</a></h2>
+        <time datetime="2019-11-02 09:00">2019-11-02 09:00 +12h</time>
+        <p>
+            <a href="files/dhbCTF.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for dhb by X1cT34m.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Web</h3>
+        <ul>
+            <li>(?)
+                <b>babyt5</b>
+            </li>
+            <li>(?)
+                <b>decade</b>
+            </li>
+            <li>(?)
+                <b>easysql</b>
+            </li>
+        </ul>
+        <h3>Misc</h3>
+        <ul>
+            <li>(0.5)
+                <b>签到</b>
+            </li>
+        </ul>
+        <h3>Crypto</h3>
+        <ul>
+            <li>(1)
+                <b>RSA</b>: solve RSA given pq and p+q
+            </li>
+            <li>(1)
+                <b>poly</b>: stupid "encryption"
+            </li>
+            <li>(3)
+                <b>ploy_revenge</b>: affine cipher over polynomial field
+            </li>
+        </ul>
+        <h3>Pwn</h3>
+        <ul>
+            <li>(?)
+                boring_pwn
+            </li>
+            <li>(?)
+                login
+            </li>
+            <li>(?)
+                SlientNote
+            </li>
+        </ul>
+        <h3>Re</h3>
+        <ul>
+            <li>(?)
+                Puzzle
+            </li>
+            <li>(?)
+                touch of Satan
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://cruit.cnss.io/" target="_blank">电子科技大学 招新赛</a></h2>
+        <time datetime="2019-09">2019-09 ~ 2019-10</time>
+        <p>
+            <a>no file</a>
+            <a href="writeups/Writeup for CNSS Recurit 2019 by X1cT34m.html"  target="_blank">writeup</a>
+        </p>
+        <h3>...</h3>
+        <hr>
+
+
+        <h2><a href="https://gongce.xctf.org.cn/" target="_blank">“数字经济”云安全共测大赛</a></h2>
+        <time datetime="2019-09-20 09:00">2019-09-20 09:00 +8h</time>
+        <p>
+            <a href="files/gongceCTF.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for Gongce CTF by X1ct34m.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Pwn</h3>
+        <ul>
+            <li>(?)
+                <b>fkroman</b>
+            </li>
+            <li>(?)
+                <b>amazon</b>
+            </li>
+        </ul>
+        <h3>Misc</h3>
+        <ul>
+            <li>(0)
+                <b>签到题</b>
+            </li>
+            <li>(2)
+                <b>ewm</b>: solve a QR-code puzzle
+            </li>
+            <li>(3)
+                <b>findme</b>: guess a large number by using dichotomy
+            </li>
+        </ul>
+        <h3>Web</h3>
+        <ul>
+            <li>(?)
+                <b>gameapp</b>
+            </li>
+        </ul>
+        <hr>
+
+
+        <h2><a href="https://adworld.xctf.org.cn/match/guide?event=101&hash=b1c22799-e6cf-4892-937d-c189605f5b5f.event" target="_blank">Byte CTF 字节跳动网络安全攻防大赛</a></h2>
+        <time datetime="2019-09-07 09:00">2019-09-07 09:00 +36h</time>
+        <p>
+            <a href="files/BytesCTF.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for Bytes CTF 2019.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(6)
+                <b>lrlr</b>: MT19937 + RSA + AES + GF(2^256)
+            </li>
+        </ul>
+        <h3>Misc</h3>
+        <ul>
+            <li>(2)
+                <b>betgame</b>: esay guess game
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="http://nssc.cace.org.cn/" target="_blank">2019 中国技能大赛选拔赛</a></h2>
+        <time datetime="2019-09-08 08:30">2019-09-08 08:30 +9h</time>
+        <p>
+            <a href="files/skill_competition_problems.zip" target="_blank" download>files</a>
+            <a href="writeups/Writeup for 2019 中国技能大赛–全国电信和互联网行业网络安全管理职业技能竞赛.html"  target="_blank">writeup</a>
+        </p>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(1)
+                <b>Crypto1</b>: reversed hex
+            </li>
+            <li>(2)
+                <b>Crypto2</b>: factor n into 3 primes
+            </li>
+        </ul>
+        <h3>Steg</h3>
+        <ul>
+            <li>(3)
+                <b>Steg1</b>: CRC32 + LSB
+            </li>
+            <li>(3)
+                <b>Steg2</b>: jpg + encrypted zip
+            </li>
+        </ul><h3>Misc</h3>
+        <ul>
+            <li>(1)
+                <b>Misc3</b>: baby forensics
+            </li>
+            <li>(2)
+                <b>Misc1</b>: Wifi traffic analysis
+            </li>
+            <li>(3)
+                <b>Misc2</b>: Web traffic analysis
+            </li>
+        </ul>
+        <h3>Reverse</h3>
+        <ul>
+            <li>(3)
+                <b>Re2</b>: esay maze
+            </li>
+            <li>(3)
+                <b>Re1</b>: easy algorithm reverse
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://summer.cnss.io/" target="_blank">CNSS Summer Camp 2019</a></h2>
+        <time>2019 summer</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(4)
+                <b>Share</b>: solve a modified RSA whose moduli share the same primes
+                <a href="files/cnss_summer_camp_2019_Crypto_Share.zip" download>file</a>
+                <a href="writeups/Writeup for Share in CNSS Summer Camp 2019.html"  target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://adworld.xctf.org.cn/match/guide?event=92&hash=e03efb17-4f35-416c-a788-ba434c7e5254.event" target="_blank">SUCTF 2019</a></h2>
+        <time datetime="2019-08-17 09:00">2019-08-17 09:00 +36h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(3)
+                <b>DSA</b>: exploit the reused ephemeral key *k* to break DSA
+                <a>no file</a>
+                <a href="writeups/Writeup for DSA in SUCTF 2019.html"  target="_blank">writeup</a>
+            </li>
+            <li>(3)
+                <b>Prime</b>: factor n into 4 primes
+                <a href="files/40315603f0324347b137dce182f4e8eb.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for Prime in SUCTF 2019.html" target="_blank">writeup</a>
+            </li>
+            <li>(3)
+                <b>MT</b>: reverse a modified MT algorithm
+                <a href="files/b1e2a93994304832876af6001da9d123.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for MT in SUCTF 2019.html" target="_blank">writeup</a>
+            </li>
+            <li>(4)
+                <b>RSA</b>: crack a RSA parity oracle
+                <a href="files/9de784207d9344229045f4289fc9e5a6.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for RSA in SUCTF 2019.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://adworld.xctf.org.cn/match/guide?event=86&hash=f7542bc2-5b24-41c9-80e7-eb1b24e01bb1.event" target="_blank">De1CTF 2019</a></h2>
+        <time datetime="2019-08-03 09:00">2019-08-03 09:00 +48h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(3)
+                <b>xorz</b>: recover key from stream cipher
+                <a href="files/6d5dfac785bb422a9d72cb18a55f1319.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for xorz in 2019 De1CTF.html"  target="_blank">writeup</a>
+            </li>
+            <li>(4)
+                <b>Babylfsr</b>: reverse a lfsr given 2n outputs
+                <a href="files/08cc8e084f274dd589c2fd0d7c780115.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for Babylfsr in 2019 De1CTF.html" target="_blank">writeup</a>
+            </li>
+            <li>(4)
+                <b>Baby RSA</b>: crack a nesting RSA
+                <a href="files/112e966f363c4286b425265dfda9873d.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for Baby RSA in 2019 De1CTF.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://cybrics.net/tasks" target="_blank">CyBRICS CTF 2019</a></h2>
+        <time datetime="2019-07-20 18:00">2019-07-20 18:00 +24h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(2)
+                <b>Zakukozh</b>: decipher an img file encrypted by Affine Cipher
+                <a href="files/zakukozh.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for Zakukozh in CyBRICS.html" target="_blank">writeup</a>
+            </li>
+            <li>(4)
+                <b>Fast Crypto</b>: optimize a brute-force algorithm using mathematical theories
+                <a href="files/fastcrypto.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for Fast Crypto in CyBRICS.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://adworld.xctf.org.cn/match/guide?event=84&hash=2745a77e-2e96-4053-ab7e-7965855dc14b.event" target="_blank">SCTF 2019</a></h2>
+        <time datetime="2019-06-22 09:00">2019-06-22 09:00 +36h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(3)
+                <b>warmup</b>: forge AES message to get verified
+                <a href="files/cfb3dacd97b74e91bdcb4ba6cce3794e.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for warmup in 2019 SCTF.html" target="_blank">writeup</a>
+            </li>
+            <li>(5)
+                <b>babygame</b>: RSA Broadcast Attack with Linear Padding & forge
+                <a href="files/798b0575162045d68f624cad10fa57a9.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for babygame in 2019 SCTF.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://race.ichunqiu.com/sdb" target="_blank">2019"神盾杯"上海市网络安全竞赛</a></h2>
+        <time datetime="2019-06-14 09:00">2019-06-14 09:00 +24h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(4)
+                <b>easyRSA</b>: tackle RSA using 3 attacks
+                <a href="files/easyRSA.rar" target="_blank" download>file</a>
+                <a href="writeups/Writeup for easyRSA in 2019神盾杯.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://www.linkedbyx.com/taskinfo/589/detail" target="_blank">2019西湖论剑决赛复现</a></h2>
+        <time datetime="2019-05-30 09:00">2019-05-30 09:00 +9h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(2)
+                <b>RSA</b>: find p+q given n, e, d
+                <a href="files/1905295cee20a17c28b.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for RSA in 2019西湖决赛.html" target="_blank">writeup</a>
+            </li>
+            <li>(4)
+                <b>VVVV</b>: Vigenere Cipher
+                <a href="files/1905295cee20a0e4b56.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for VVVV in 2019西湖决赛.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://qwb.xctf.org.cn/" target="_blank">第三届强网杯</a></h2>
+        <time datetime="2019-05-25 09:00">2019-05-25 09:00 +36h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(6)
+                <b>copperstudy</b>:  tackle 6 RSA challenges concerning <i>Coppersmith method</i>
+                <a>no file</a>
+                <a href="writeups/Writeup for copperstudy in 2019强网杯.html" target="_blank">writeup</a>
+            </li>
+            <li>(1)
+                <b>强网先锋-辅助</b>:  recover p from two different n1, n2 generated by the same p
+                <a href="files/task_cha.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for 强网先锋-辅助 in 2019强网杯.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="http://121.46.4.70" target="_blank">2019GUET_CTF</a></h2>
+        <time datetime="2019-5-22 09:00">2019-05-22 09:00 +36h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(1)
+                <b>baby_rsa</b>:  calculate n according to given relationship of p and q
+                <a href="files/baby_rsa.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for baby_rsa in GUET_CTF2019.html" target="_blank">writeup</a>
+            </li>
+        </ul>
+        <hr>
+
+        <h2><a href="https://race.ichunqiu.com/topic/2019dxs" target="_blank">2019全国大学生信息安全大赛</a></h2>
+        <time datetime="2019-4-20 09:00">2019-04-20 09:00 +36h</time>
+        <h3>Cryptography</h3>
+        <ul>
+            <li>(1)
+                <b>puzzles</b>:  solve easy math and physics problems
+                <a href="files/puzzles_4bd8ba4b08cf59d558f6b366d44e222e.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for puzzles in 2019 国赛.html" target="_blank">writeup</a>
+            <li>(3)
+                <b>part_des</b>:  decrypt DES with round n encoding result
+                <a href="files/part_des_8d91d0ca69671bc3bee8623aae2bf8f9.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for part_des in 2019国赛.html" target="_blank">writeup</a>
+            </li>
+            <li>(2)
+                <b>warmup</b>:  exploit the repeated AES-CRT counter to find the message
+                <a href="files/warmup_9d9def57884ea481bbd59a0d834a6242.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for warmup in 2019国赛.html" target="_blank">writeup</a>
+            <li>(4)
+                <b>Asymmetric</b>:  crack a modified RSA encryption by extracting n
+                <a href="files/Asymmetric_new_63EBF4CD8B7659430706CD7E8A10D42E.zip" target="_blank" download>file</a>
+                <a href="writeups/Writeup for Asymmetric in 2019国赛.html" target="_blank">writeup</a>
+        </ul>
+
+    </main>
+
