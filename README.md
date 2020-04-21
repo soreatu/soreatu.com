@@ -2,7 +2,7 @@
 
 老博客的源码。
 
-主要是参考https://yx7.cc/的格式。
+主要是参考 https://yx7.cc/ 的格式。
 
 纯手敲的html + Typora转出来的html。
 
